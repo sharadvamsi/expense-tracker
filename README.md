@@ -7,9 +7,11 @@ Important NOTE:
 
 2. in backend also in app.use(cors({})object replace origin value "https://expense-tracker-beta-swart.vercel.app" with "*".
                                                                                                                                                                                          
-3.There is no separate api to make a user admin. we have to edit in db manually by default every user role is created as "employee".
+3. while testing locally There is no separate api to make a user admin. we have to edit in db manually by default every user role is created as "employee". but while testing my live demo you can use email:admin@gmail.com and password:123456 for admin login
 
-4. rename sample.env file to .env and provide values for keep to connect with db
+
+
+5. rename sample.env file to .env and provide values for keys to connect with db
 
 now open the repository in your code editor and open terminal                                                                                                                                                                                                         
 
