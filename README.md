@@ -7,7 +7,9 @@ Important NOTE:
 
 2. in backend also in app.use(cors({})object replace origin value "https://expense-tracker-beta-swart.vercel.app" with "*".
                                                                                                                                                                                          
-3.admin is already created. email:admin@gmail.com, password:123456. you cant create new admin because any new user you register by default they are set as "employee".so for admin login use provided credentials.          
+3.There is no separate api to make a user admin. we have to edit in db manually by default every user role is created as "employee".
+
+4. rename sample.env file to .env and provide values for keep to connect with db
 
 now open the repository in your code editor and open terminal                                                                                                                                                                                                         
 
