@@ -24,7 +24,7 @@ const Register = () => {
     e.preventDefault();
     setLoading(!loading);
     console.log("Registration successful! Data saved:", formData);
-    const request = await fetch("http://localhost:5000/user/register", {
+    const request = await fetch("https://expense-tracker-hx8p.onrender.com/user/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

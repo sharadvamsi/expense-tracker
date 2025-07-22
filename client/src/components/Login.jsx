@@ -22,7 +22,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(!loading);
     console.log("Login successful! Data saved:", formData);
-    const request = await fetch("http://localhost:5000/user/login", {
+    const request = await fetch("https://expense-tracker-hx8p.onrender.com/user/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +36,7 @@ const Login = () => {
 
       const token = localStorage.setItem("token", response.token);
       const authenticate = await fetch(
-        "http://localhost:5000/user/user-details",
+        "https://expense-tracker-hx8p.onrender.com/user/user-details",
         {
           method: "GET",
           headers: {

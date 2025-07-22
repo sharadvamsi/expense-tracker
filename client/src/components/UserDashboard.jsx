@@ -13,7 +13,7 @@ const UserDashboard = () => {
 
       console.log(token);
       const request = await fetch(
-        "http://localhost:5000/expenses/view-expenses",
+        "https://expense-tracker-hx8p.onrender.com/expenses/view-expenses",
         {
           method: "GET",
           headers: {
@@ -44,7 +44,7 @@ const UserDashboard = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const request = await fetch("http://localhost:5000/expenses/add-expense", {
+    const request = await fetch("https://expense-tracker-hx8p.onrender.com/expenses/add-expense", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

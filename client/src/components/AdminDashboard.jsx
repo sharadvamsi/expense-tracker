@@ -47,7 +47,7 @@ const AdminDashboard = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const request = await fetch("http://localhost:5000/admin/view-expenses", {
+      const request = await fetch("https://expense-tracker-hx8p.onrender.com/admin/view-expenses", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -60,7 +60,7 @@ const AdminDashboard = () => {
       setFilteredExpenses(response);
 
       const requestaudit = await fetch(
-        "http://localhost:5000/admin/audit-logs",
+        "https://expense-tracker-hx8p.onrender.com/admin/audit-logs",
         {
           method: "GET",
           headers: {
@@ -80,14 +80,14 @@ const AdminDashboard = () => {
       try {
         // Fetch data for both charts in parallel
         const [categoryRes, monthRes] = await Promise.all([
-          fetch("http://localhost:5000/admin/expense-by-category", {
+          fetch("https://expense-tracker-hx8p.onrender.com/admin/expense-by-category", {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
               Authorization: token,
             },
           }),
-          fetch("http://localhost:5000/admin/expense-by-month", {
+          fetch("https://expense-tracker-hx8p.onrender.com/admin/expense-by-month", {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
@@ -137,7 +137,7 @@ const AdminDashboard = () => {
       queryParams.append("userId", filters.userId);
     }
 
-    const url = `http://localhost:5000/admin/view-expenses?${queryParams.toString()}`;
+    const url = `https://expense-tracker-hx8p.onrender.com/admin/view-expenses?${queryParams.toString()}`;
 
     console.log("Calling:", url);
 
@@ -158,7 +158,7 @@ const AdminDashboard = () => {
     console.log(`Calling API: Update expense ${expenseId} to status ${status}`);
 
     const request = await fetch(
-      `http://localhost:5000/admin/change-status/${expenseId}`,
+      `https://expense-tracker-hx8p.onrender.com/admin/change-status/${expenseId}`,
       {
         method: "PATCH",
         headers: {
