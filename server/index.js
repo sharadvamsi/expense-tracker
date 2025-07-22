@@ -15,6 +15,9 @@ app.listen("5000", () => {
   console.log("Server listening on port number 5000 :)");
 });
 
+app.get("/",(req,res)=>{
+  res.status(200).json("API IS RUNNING.....")
+})
 //connecting to mongodb
 const db = mongoose
   .connect(process.env.MONGO_URI)
