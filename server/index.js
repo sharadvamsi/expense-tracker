@@ -2,6 +2,8 @@ import express from "express"
 import mongoose from "mongoose";
 import dotenv from "dotenv"
 import authRouter from "./routes/authRoute.js"
+import expenseRouter from "./routes/expenseRoute.js"
+
 const app = express();
 dotenv.config();
 app.use(express.json());
@@ -16,4 +18,5 @@ const db = mongoose.connect(process.env.MONGO_URI)
 .catch((err)=>console.log("Error in db",err));
 
 
-app.use("/user",authRouter)
+app.use("/user",authRouter);
+app.use("/expenses",expenseRouter);
