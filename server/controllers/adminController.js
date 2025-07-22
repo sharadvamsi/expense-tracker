@@ -54,3 +54,57 @@ export const changeStatus = async (req, res) => {
     return res.status(500).json({ err: "Internal server error" });
   }
 };
+
+export const expenseByCategory = async (req, res) => {
+  const chartData = await expenseModel.aggregate([
+    { $match: { status: "Approved" } },
+    {
+      $group: {
+        _id: "$category",
+        total: { $sum: "$amount" },
+      },
+    },
+    {
+      $project: {
+        category: "$_id",
+        total: { $round: ["$total", 2] },
+        _id: 0,
+      },
+    },
+  ]);
+
+  res.status(200).json(chartData);
+};
+
+export const expenseByMonth = async (req, res) => {
+  const monthlyExpenses = await expenseModel.aggregate([
+    {
+      $match: { status: "Approved" },
+    },
+    {
+      $addFields: {
+        dateObj: { $toDate: "$date" }, // Converts string to actual Date
+      },
+    },
+    {
+      $group: {
+        _id: {
+          $dateToString: { format: "%Y-%m", date: "$dateObj" },
+        },
+        total: { $sum: "$amount" },
+      },
+    },
+    {
+      $project: {
+        month: "$_id",
+        total: { $round: ["$total", 2] },
+        _id: 0,
+      },
+    },
+    {
+      $sort: { month: 1 },
+    },
+  ]);
+
+  res.status(200).json(monthlyExpenses);
+};

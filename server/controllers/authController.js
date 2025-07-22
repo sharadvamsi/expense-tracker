@@ -40,3 +40,12 @@ export const loginUser = async (req, res) => {
     return res.status(500).json({ err: "Internal server error" });
   }
 };
+
+export const getUserDetails = async (req, res) => {
+  const userId = req.userId;
+
+  const userData = await userModel.findById(userId);
+ 
+
+  res.status(200).json(userData);
+};
