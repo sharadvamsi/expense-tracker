@@ -7,9 +7,19 @@ const UserDashboard = () => {
   const [expenses, setExpenses] = useState([]);
   const token = localStorage.getItem("token");
   const navigate = useNavigate();
+
+  
+  const handleLogout = () => {
+    localStorage.removeItem("token"); 
+    navigate("/login"); 
+  };
+
   useEffect(() => {
     const fetchData = async () => {
-      if (!token) navigate("/login");
+      if (!token) {
+        navigate("/login");
+        return;
+      }
 
       console.log(token);
       const request = await fetch(
@@ -27,7 +37,7 @@ const UserDashboard = () => {
       setExpenses(response);
     };
     fetchData();
-  }, []);
+  }, [token, navigate]); 
 
   const [newExpense, setNewExpense] = useState({
     amount: "",
@@ -64,9 +74,18 @@ const UserDashboard = () => {
   return (
     <div className="bg-gray-100 min-h-screen p-4 sm:p-6 lg:p-8">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold text-gray-800 mb-6">
-          Your Dashboard
-        </h1>
+      
+        <div className="flex justify-between items-center mb-6">
+          <h1 className="text-3xl font-bold text-gray-800">
+            Your Dashboard
+          </h1>
+          <button
+            onClick={handleLogout}
+            className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline transition-colors duration-300"
+          >
+            Logout
+          </button>
+        </div>
 
         {/* Tabs for switching views */}
         <div className="flex border-b border-gray-300 mb-6">
