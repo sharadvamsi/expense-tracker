@@ -10,7 +10,7 @@ const app = express();
 dotenv.config();
 app.use(express.json());
 app.use(cors({
-  origin: "https://expense-tracker-beta-swart.vercel.app/",
+  origin: "https://expense-tracker-beta-swart.vercel.app",
   methods: ["GET", "POST","PATCH"], // Allowed methods
 }))
 //connecting to server
