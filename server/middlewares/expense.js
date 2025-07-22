@@ -8,7 +8,7 @@ export const verifyToken = (req, res, next) => {
     next();
   } catch (error) {
     console.log("err", error);
-    res.status(401).json({ err: error.message });
+    return res.status(401).json({ err: error.message });
   }
 };
 
@@ -22,6 +22,6 @@ export const getUserId = (req, res, next) => {
     next();
   } catch (error) {
     console.log("err", error);
-    res.status(500).json({ err: "Internal server error" });
+    return res.status(500).json({ err: "Internal server error" });
   }
 };

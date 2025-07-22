@@ -20,10 +20,10 @@ export const addExpense = async (req, res) => {
       expenseId,
     });
 
-    res.status(201).json(expenseRecord);
+    return res.status(201).json(expenseRecord);
   } catch (error) {
     console.log(error);
-    res.status(500).json({ err: "Internal Server error" });
+    return res.status(500).json({ err: "Internal Server error" });
   }
 };
 
@@ -31,9 +31,9 @@ export const viewExpense = async (req, res) => {
   try {
     const userId = req.userId;
     const getRecords = await expenseModel.find({ userId });
-    res.status(200).json(getRecords);
+    return res.status(200).json(getRecords);
   } catch (error) {
     console.log("err", error);
-    res.status(500).json({ err: "Internal server error" });
+    return res.status(500).json({ err: "Internal server error" });
   }
 };
